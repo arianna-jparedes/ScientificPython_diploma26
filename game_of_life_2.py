@@ -56,13 +56,13 @@ class GameOfLife():
         return n
 
     def roll_count(self):
-    g = self.grid
+        g = self.grid
 
-    n = (
+        n = (
         np.roll(g,  1, axis=0) + np.roll(g, -1, axis=0) + np.roll(g,  1, axis=1) + np.roll(g, -1, axis=1) + np.roll(np.roll(g,  1, axis=0),  1, axis=1) + np.roll(np.roll(g,  1, axis=0), -1, axis=1) + np.roll(np.roll(g, -1, axis=0),  1, axis=1) + np.roll(np.roll(g, -1, axis=0), -1, axis=1) 
     )
 
-    return n
+        return n
 
     def step(self) -> None:
         n = self.slice_count()
@@ -77,7 +77,7 @@ class GameOfLife():
 
     def run(self, steps, pause):
         plt.figure()
-        img = plt.imshow(self.grid, interpolation="nearest")
+        img = plt.imshow(self.grid, cmap="summer")
         plt.axis("off")
 
         for i in range(steps):
@@ -90,7 +90,7 @@ class GameOfLife():
 
 def main():
     game = GameOfLife("./data/gun.txt")
-    game.run(steps=400, pause=0.05)
+    game.run(steps=900, pause=0.05)
 
 
 if __name__ == "__main__":
